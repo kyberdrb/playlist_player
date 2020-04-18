@@ -11,6 +11,7 @@ case $PLAYLIST in
         PLAYLIST="house_instrumental_no_vocals.m3u8"
         ;;
     *)
+        PLAYLIST=$PLAYLIST_ARG
         ;;
 esac
 
