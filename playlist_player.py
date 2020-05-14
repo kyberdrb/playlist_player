@@ -19,12 +19,11 @@ print()
 
 for songURL in songURLs:
     print(songURL)
-    #p = subprocess.Popen(["vlc", "--play-and-exit", "--playlist-autostart", "--no-video", "--qt-start-minimized", songURL], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(["vlc", "--play-and-exit", "--playlist-autostart", "--no-video", "--qt-start-minimized", songURL], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     spaces = 0
     step = 1
-    #while p.poll() == None:
-    while True:
+    while p.poll() == None:
         padding = str()
         for space in range(spaces):
             padding += ' '
@@ -38,7 +37,7 @@ for songURL in songURLs:
                 step = -1
             else:
                 sign = "\\"
-        
+
         if step == -1:
             if spaces == 0:
                 sign = "("
