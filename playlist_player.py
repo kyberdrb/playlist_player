@@ -21,31 +21,29 @@ for songURL in songURLs:
     print(songURL)
     p = subprocess.Popen(["vlc", "--play-and-exit", "--playlist-autostart", "--no-video", "--qt-start-minimized", songURL], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    spaces = 0
+    paddingSize = 0
     step = 1
     while p.poll() == None:
         padding = str()
-        for space in range(spaces):
+        for eachUnit in range(paddingSize):
             padding += ' '
 
-        if spaces == 0:
+        if paddingSize == 0:
             sign = "("
             step = 1
 
-        if spaces == 4:
+        if paddingSize == 4:
             sign = ")"
             step = -1
 
-        if spaces != 0 and spaces != 4 and step == 1:
+        if paddingSize != 0 and paddingSize != 4 and step == 1:
             sign = "\\"
 
-        if spaces != 0 and spaces != 4 and step == -1:
+        if paddingSize != 0 and paddingSize != 4 and step == -1:
             sign = "/"
 
         print(padding + sign)
-
-        spaces += step
-
+        paddingSize += step
         time.sleep(1)
 
 
