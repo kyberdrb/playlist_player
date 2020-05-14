@@ -31,14 +31,16 @@ for songURL in songURLs:
         if spaces == 0:
             sign = "("
             step = 1
-        elif spaces == 4:
+
+        if spaces == 4:
             sign = ")"
             step = -1
-        else:
-            if step == 1:
-                sign = "\\"
-            if step == -1:
-                sign = "/"
+
+        if spaces != 0 and spaces != 4 and step == 1:
+            sign = "\\"
+
+        if spaces != 0 and spaces != 4 and step == -1:
+            sign = "/"
 
         print(padding + sign)
 
