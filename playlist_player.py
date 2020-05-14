@@ -28,24 +28,16 @@ for songURL in songURLs:
         for space in range(spaces):
             padding += ' '
 
-        if step == 1:
-            if spaces == 0:
-                sign = "("
-                step = 1
-            elif spaces == 4:
-                sign = ")"
-                step = -1
-            else:
+        if spaces == 0:
+            sign = "("
+            step = 1
+        elif spaces == 4:
+            sign = ")"
+            step = -1
+        else:
+            if step == 1:
                 sign = "\\"
-
-        if step == -1:
-            if spaces == 0:
-                sign = "("
-                step = 1
-            elif spaces == 4:
-                sign = ")"
-                step = -1
-            else:
+            if step == -1:
                 sign = "/"
 
         print(padding + sign)
