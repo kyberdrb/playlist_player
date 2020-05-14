@@ -15,4 +15,4 @@ case $PLAYLIST in
         ;;
 esac
 
-cvlc --play-and-exit --random --loop "$PLAYLIST"
+vlc --play-and-exit --random --loop "$PLAYLIST"
