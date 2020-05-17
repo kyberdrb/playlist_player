@@ -1,6 +1,8 @@
-import sys
+from src.playlist import Playlist
+
 def play():
     # PlaylistLoader - empty ctor/ctor(PlaylistFile)/ctor(YoutubePlaylist) - polymorphism? overload? - first overload, then polymorphism
+    import sys
     playlistFile = "dnb_instrumental_no_vocals.m3u8"
     if len(sys.argv) >= 2:
         playlistFile = sys.argv[1]
@@ -21,8 +23,7 @@ def play():
         #youtube-dl --flat-playlist --dump-json https://www.youtube.com/playlist?list=UUREvOFg1F4bfZZqdmIJknrg | cut -d' ' -f4 | sed 's/[",]//g' | sed "s/^/https:\/\/www\.youtube\.com\/watch\?v=/g"
 
     # Playlist - shuffle()
-    import random
-    random.shuffle(playlistItems)
+    Playlist.shuffle(playlistItems)
 
     # Playlist - getAllPlaylistItems()
     for songURL in playlistItems:
