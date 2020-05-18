@@ -9,7 +9,7 @@ class PlaylistLoader:
         playlist = Playlist()
 
         with open(self.playlistSource, "r") as source:
-            print("Reading file:\t%s"% source)
+            print("Reading file:\t%s"% self.playlistSource)
             for line in source:
                 if "www" in line:
                     line = line.rstrip("\n")

@@ -15,13 +15,17 @@ if __name__ == "__main__":
 
     # PlaylistLoader - load(PlaylistFile playlistSource) - overload
     playlist = playlistLoader.load()
+
+    # Move all print commands to a separate class 'Screen'
     print()
 
     # PlaylistLoader - load(YoutubePlaylist youtubePlaylist) - overload
     ####import subprocess
     ####youtube-dl --flat-playlist --dump-json https://www.youtube.com/playlist?list=UUREvOFg1F4bfZZqdmIJknrg | cut -d' ' -f4 | sed 's/[",]//g' | sed "s/^/https:\/\/www\.youtube\.com\/watch\?v=/g"
 
-    # Playlist shuffle will be optional: it will be enabled/disabled by a flag/option
+    # Playlist shuffle will be optional and enabled by default, 
+    # if not specified at application start:
+    #   - it will be enabled/disabled by a option '--shuffle/--no-shuffle'
     playlist.shuffle()
 
     print(playlist.getAllPlaylistItemsAsText())

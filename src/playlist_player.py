@@ -20,6 +20,7 @@ class PlaylistPlayer:
                 ["vlc", "--play-and-exit", "--playlist-autostart", "--no-video", "--qt-start-minimized", songURL], 
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
+            # Extract WaveDrawer
             # WaveDrawer - constructor
             paddingSize = 0
             step = 1
