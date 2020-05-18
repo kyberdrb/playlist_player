@@ -1,41 +1,41 @@
 from src.playlist import Playlist
+from src.playlist_loader import PlaylistLoader
 
 def play():
-    # PlaylistLoader - empty ctor/ctor(PlaylistFile)/ctor(YoutubePlaylist) - polymorphism? overload? - first overload, then polymorphism
+    # ArgumentParser - checkPlaylistSource(argv)
     import sys
     playlistFile = "dnb_instrumental_no_vocals.m3u8"
     if len(sys.argv) >= 2:
         playlistFile = sys.argv[1]
         print("Argument provided:\t%s"% playlistFile)
 
-    # PlaylistLoader - load(PlaylistFile playlistFile) - overload
-    playlistItems = list()
+    # PlaylistLoader
+    #   - empty ctor
+    #   - and/or ctor(PlaylistFile)/ctor(YoutubePlaylist)
+    #     - polymorphism? overload? - first overload, then polymorphism
+    playlistLoader = PlaylistLoader(playlistFile)
 
-    with open(playlistFile, "r") as playlist:
-        print("Reading file:\t%s"% playlistFile)
-        for line in playlist:
-            if "www" in line:
-                line = line.rstrip("\n")
-                playlistItems.append(line)
+    # PlaylistLoader - load(PlaylistFile playlistFile) - overload
+    playlistItems = PlaylistLoader.load(playlistFile)
+    print()
 
     # PlaylistLoader - load(YoutubePlaylist youtubePlaylist) - overload
-        import subprocess
-        #youtube-dl --flat-playlist --dump-json https://www.youtube.com/playlist?list=UUREvOFg1F4bfZZqdmIJknrg | cut -d' ' -f4 | sed 's/[",]//g' | sed "s/^/https:\/\/www\.youtube\.com\/watch\?v=/g"
+    ####import subprocess
+    ####youtube-dl --flat-playlist --dump-json https://www.youtube.com/playlist?list=UUREvOFg1F4bfZZqdmIJknrg | cut -d' ' -f4 | sed 's/[",]//g' | sed "s/^/https:\/\/www\.youtube\.com\/watch\?v=/g"
 
     # Playlist - shuffle()
+    #   - optional - will be enabled/disabled by a flag
     Playlist.shuffle(playlistItems)
 
     # Playlist - getAllPlaylistItems()
-    for songURL in playlistItems:
-        print(songURL)
-
-    print()
+    print(Playlist.getAllPlaylistItems(playlistItems))
 
     # PlaylistPlayer - play(Playlist)
     import time
     import subprocess
     for songURL in playlistItems:
         print(songURL)
+        print()
 
         # Option "--play-to-the-end": start the player in a detached thread; the thread will terminate after 
         #  the playlist item will go to the end, instead of terminating the player with the script at 'CTRL + C', i.e. KeyboardInterrupt exception
@@ -89,8 +89,6 @@ def play():
     print("============================================")
     print()
 
-# first encapsulate the rest of this file into a 'main()' method
-# then add launch condition
 if __name__ == "__main__":
     play()
 
