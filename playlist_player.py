@@ -1,22 +1,19 @@
 from src.playlist import Playlist
 from src.playlist_loader import PlaylistLoader
+from src.argument_parser import ArgumentParser
 
 def play():
-    # ArgumentParser - checkPlaylistSource(argv)
-    import sys
-    playlistFile = "dnb_instrumental_no_vocals.m3u8"
-    if len(sys.argv) >= 2:
-        playlistFile = sys.argv[1]
-        print("Argument provided:\t%s"% playlistFile)
+    argumentParser = ArgumentParser()
+    playlistSource = argumentParser.getPlaylistSource()
 
     # PlaylistLoader
     #   - empty ctor
     #   - and/or ctor(PlaylistFile)/ctor(YoutubePlaylist)
     #     - polymorphism? overload? - first overload, then polymorphism
-    playlistLoader = PlaylistLoader(playlistFile)
+    playlistLoader = PlaylistLoader(playlistSource)
 
-    # PlaylistLoader - load(PlaylistFile playlistFile) - overload
-    playlistItems = PlaylistLoader.load(playlistFile)
+    # PlaylistLoader - load(PlaylistFile playlistSource) - overload
+    playlistItems = PlaylistLoader.load(playlistSource)
     print()
 
     # PlaylistLoader - load(YoutubePlaylist youtubePlaylist) - overload
