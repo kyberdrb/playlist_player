@@ -3,7 +3,7 @@ from src.playlist_loader import PlaylistLoader
 from src.argument_parser import ArgumentParser
 from src.playlist_player import PlaylistPlayer
 
-def play():
+if __name__ == "__main__":
     argumentParser = ArgumentParser()
     playlistSource = argumentParser.getPlaylistSource()
 
@@ -14,7 +14,7 @@ def play():
     playlistLoader = PlaylistLoader(playlistSource)
 
     # PlaylistLoader - load(PlaylistFile playlistSource) - overload
-    playlistItems = PlaylistLoader.load(playlistSource)
+    playlist = playlistLoader.load()
     print()
 
     # PlaylistLoader - load(YoutubePlaylist youtubePlaylist) - overload
@@ -23,14 +23,11 @@ def play():
 
     # Playlist - shuffle()
     #   - optional - will be enabled/disabled by a flag
-    Playlist.shuffle(playlistItems)
+    Playlist.shuffle(playlist)
 
     # Playlist - getAllPlaylistItems()
-    print(Playlist.getAllPlaylistItems(playlistItems))
+    print(Playlist.getAllPlaylistItems(playlist))
 
     # PlaylistPlayer - play(Playlist)
-    PlaylistPlayer.play(playlistItems)
-
-if __name__ == "__main__":
-    play()
+    PlaylistPlayer.play(playlist)
 

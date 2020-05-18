@@ -2,6 +2,9 @@ import random
 
 class Playlist:
 
+    def __init__(self):
+        self.playlistItems = list()
+
     @staticmethod
     def shuffle(playlistItems):
         random.shuffle(playlistItems)
