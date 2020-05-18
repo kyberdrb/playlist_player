@@ -30,4 +30,3 @@ if __name__ == "__main__":
 
     # PlaylistPlayer - play(Playlist)
     PlaylistPlayer.play(playlist)
-
