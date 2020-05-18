@@ -3,6 +3,10 @@ from src.playlist_loader import PlaylistLoader
 from src.argument_parser import ArgumentParser
 from src.playlist_player import PlaylistPlayer
 
+# Logger instead of print() - https://docs.python.org/3/library/logging.html
+
+# handle KeyboardInterrupt - Ctrl + C signal
+
 if __name__ == "__main__":
     argumentParser = ArgumentParser()
     playlistSource = argumentParser.getPlaylistSource()
