@@ -21,12 +21,11 @@ if __name__ == "__main__":
     ####import subprocess
     ####youtube-dl --flat-playlist --dump-json https://www.youtube.com/playlist?list=UUREvOFg1F4bfZZqdmIJknrg | cut -d' ' -f4 | sed 's/[",]//g' | sed "s/^/https:\/\/www\.youtube\.com\/watch\?v=/g"
 
-    # Playlist - shuffle()
-    #   - optional - will be enabled/disabled by a flag
-    Playlist.shuffle(playlist)
+    # Playlist shuffle will be optional: it will be enabled/disabled by a flag/option
+    playlist.shuffle()
 
-    # Playlist - getAllPlaylistItems()
-    print(Playlist.getAllPlaylistItems(playlist))
+    print(playlist.getAllPlaylistItemsAsText())
 
-    # PlaylistPlayer - play(Playlist)
-    PlaylistPlayer.play(playlist)
+    playlistPlayer = PlaylistPlayer()
+    playlistPlayer.updatePlaylist(playlist)
+    playlistPlayer.play()

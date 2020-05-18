@@ -6,7 +6,6 @@ class PlaylistLoader:
         self.playlistSource = playlistSource
 
     def load(self):
-        playlistItems = list()
         playlist = Playlist()
 
         with open(self.playlistSource, "r") as source:
@@ -14,7 +13,6 @@ class PlaylistLoader:
             for line in source:
                 if "www" in line:
                     line = line.rstrip("\n")
-                    playlistItems.append(line)
                     playlist.append(line)
 
-        return playlistItems
+        return playlist

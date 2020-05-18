@@ -8,15 +8,16 @@ class Playlist:
     def append(self, playlistItem):
         self.playlistItems.append(playlistItem)
 
-    @staticmethod
-    def shuffle(playlistItems):
-        random.shuffle(playlistItems)
+    def shuffle(self):
+        random.shuffle(self.playlistItems)
 
-    @staticmethod
-    def getAllPlaylistItems(playlistItems):
+    def getAllPlaylistItemsAsText(self):
         playlistItemsAsText = str()
-        for songURL in playlistItems:
-            playlistItemsAsText += songURL
+        for playlistItem in self.playlistItems:
+            playlistItemsAsText += playlistItem
             playlistItemsAsText += '\n'
         
         return playlistItemsAsText
+
+    def __iter__(self):
+       return iter(self.playlistItems)

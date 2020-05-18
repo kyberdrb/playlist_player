@@ -3,9 +3,14 @@ import subprocess
 
 class PlaylistPlayer:
 
-    @staticmethod
-    def play(playlistItems):
-        for songURL in playlistItems:
+    def __init__(self):
+        self.playlist = None
+
+    def updatePlaylist(self, playlist):
+        self.playlist = playlist
+
+    def play(self):
+        for songURL in self.playlist:
             print(songURL)
             print()
 
