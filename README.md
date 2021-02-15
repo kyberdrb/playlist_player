@@ -1,6 +1,6 @@
-# DnB Playlist Player
+# YouTube Playlist Player
 
-Plays my favourite DnB tracks, instrumental DnB without vocals, from VLC randomly in a loop.
+Plays my favourite YouTube music tracks (instrumental DnB without vocals) and videos, randomly in a loop in VLC player.
 
 ## Sources
 
