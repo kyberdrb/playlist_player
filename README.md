@@ -1,6 +1,8 @@
 # YouTube Playlist Player
 
-Plays my favourite YouTube music tracks (instrumental DnB without vocals) and videos, randomly in a loop in VLC player.
+Create and play YouTube playlists without creating a channel on YouTube.
+
+Plays my favourite YouTube music tracks (e.g. instrumental DnB without vocals) and videos, randomly in a loop in VLC player.
 
 ## Sources
 
